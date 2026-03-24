@@ -75,87 +75,177 @@ function escapeHtml(value) {
   });
 }
 
-function buildRepoCard(repo, featured, index) {
-  const accent = featured?.accent || ["warm", "cool", "neutral"][index % 3];
-  const tagline = featured?.tagline || repo.language || "Repository";
+function observeRevealNodes(root = document) {
+  root.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
+}
+
+function getToneClass(featured) {
+  return featured?.visual?.tone || "blue";
+}
+
+function buildMeta(repo, featured, index, isFallback = false) {
+  const language = repo.language || "Unspecified";
+  const stars = typeof repo.stargazers_count === "number" ? repo.stargazers_count : 0;
+  const url =
+    repo.html_url ||
+    `${profileConfig.profileUrl || "https://github.com"}/${featured?.name || repo.name || ""}`;
+  const status = featured?.status || "Building";
   const headline = featured?.headline || "Small project. Clear intention.";
-  const description =
-    repo.description ||
-    "这个仓库还没有填写描述，你可以在 GitHub 上补一段更清晰的项目说明。";
   const intro =
     featured?.intro ||
     "这是一个正在持续完善中的项目，你可以点进仓库看更完整的代码、说明和更新记录。";
-  const language = repo.language || "Unspecified";
-  const stars = typeof repo.stargazers_count === "number" ? repo.stargazers_count : 0;
-  const status = featured?.status || "Building";
-  const tags = Array.isArray(featured?.tags) ? featured.tags.slice(0, 3) : [];
-  const tagMarkup = tags
-    .map((tag) => `<li>${escapeHtml(tag)}</li>`)
-    .join("");
+  const description = isFallback
+    ? "GitHub API 暂时不可用时，页面会先按你的手动配置展示这个仓库。"
+    : repo.description ||
+      "这个仓库还没有填写描述，你可以在 GitHub 上补一段更清晰的项目说明。";
+  const tags = Array.isArray(featured?.tags) ? featured.tags.slice(0, 4) : [];
 
+  return {
+    accent: featured?.accent || ["warm", "cool", "neutral"][index % 3],
+    tagline: featured?.tagline || repo.language || "Repository",
+    headline,
+    intro,
+    description,
+    language,
+    stars,
+    status,
+    tags,
+    url,
+    eyebrow: featured?.visual?.eyebrow || "Project",
+    tone: getToneClass(featured),
+  };
+}
+
+function buildSpotlightRepo(repo, featured, index, isFallback = false) {
+  const meta = buildMeta(repo, featured, index, isFallback);
+  const tags = meta.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("");
   return `
-    <article class="project-card shell-card">
-      <div class="repo-card-topline">
-        <div class="project-icon ${escapeHtml(accent)}">${String(index + 1).padStart(2, "0")}</div>
-        <span class="repo-status">${escapeHtml(status)}</span>
+    <article class="repo-spotlight shell-card reveal repo-panel tone-${escapeHtml(meta.tone)}">
+      <div class="repo-copy">
+        <p class="eyebrow">${escapeHtml(meta.eyebrow)}</p>
+        <div class="repo-card-topline">
+          <div class="project-icon ${escapeHtml(meta.accent)}">${String(index + 1).padStart(2, "0")}</div>
+          <span class="repo-status">${escapeHtml(meta.status)}</span>
+        </div>
+        <p class="project-kicker">${escapeHtml(meta.tagline)}</p>
+        <h3>${escapeHtml(repo.name)}</h3>
+        <p class="repo-headline spotlight-headline">${escapeHtml(meta.headline)}</p>
+        <p class="repo-intro">${escapeHtml(meta.intro)}</p>
+        <p class="repo-description">${escapeHtml(meta.description)}</p>
+        ${tags ? `<ul class="repo-tag-row">${tags}</ul>` : ""}
+        <div class="repo-stats">
+          <span class="project-meta">${escapeHtml(meta.language)}</span>
+          <span class="project-meta">★ ${escapeHtml(meta.stars)}</span>
+        </div>
+        <a class="repo-link" href="${escapeHtml(meta.url)}" target="_blank" rel="noreferrer">
+          查看仓库
+        </a>
       </div>
-      <p class="project-kicker">${escapeHtml(tagline)}</p>
-      <h3>${escapeHtml(repo.name)}</h3>
-      <p class="repo-headline">${escapeHtml(headline)}</p>
-      <p class="repo-intro">${escapeHtml(intro)}</p>
-      <p>${escapeHtml(description)}</p>
-      ${tagMarkup ? `<ul class="repo-tag-row">${tagMarkup}</ul>` : ""}
-      <div class="repo-stats">
-        <span class="project-meta">${escapeHtml(language)}</span>
-        <span class="project-meta">★ ${escapeHtml(stars)}</span>
+      <div class="repo-visual">
+        <div class="repo-glow"></div>
+        <div class="repo-orbit orbit-one"></div>
+        <div class="repo-orbit orbit-two"></div>
+        <div class="repo-stripes">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="repo-visual-core">
+          <p>${escapeHtml(meta.tagline)}</p>
+          <h4>${escapeHtml(repo.name)}</h4>
+          <span>${escapeHtml(meta.headline)}</span>
+        </div>
       </div>
-      <a class="repo-link" href="${escapeHtml(repo.html_url)}" target="_blank" rel="noreferrer">
-        查看仓库
-      </a>
     </article>
   `;
+}
+
+function buildShowcaseRepo(repo, featured, index, isFallback = false) {
+  const meta = buildMeta(repo, featured, index, isFallback);
+  const tags = meta.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("");
+  return `
+    <article class="repo-showcase-card shell-card reveal repo-panel tone-${escapeHtml(meta.tone)}">
+      <div class="repo-card-topline">
+        <div class="project-icon ${escapeHtml(meta.accent)}">${String(index + 1).padStart(2, "0")}</div>
+        <span class="repo-status">${escapeHtml(meta.status)}</span>
+      </div>
+      <p class="project-kicker">${escapeHtml(meta.tagline)}</p>
+      <h3>${escapeHtml(repo.name)}</h3>
+      <p class="repo-headline">${escapeHtml(meta.headline)}</p>
+      <p class="repo-intro">${escapeHtml(meta.intro)}</p>
+      <p class="repo-description">${escapeHtml(meta.description)}</p>
+      ${tags ? `<ul class="repo-tag-row">${tags}</ul>` : ""}
+      <div class="repo-bottom-row">
+        <div class="repo-stats">
+          <span class="project-meta">${escapeHtml(meta.language)}</span>
+          <span class="project-meta">★ ${escapeHtml(meta.stars)}</span>
+        </div>
+        <a class="repo-link" href="${escapeHtml(meta.url)}" target="_blank" rel="noreferrer">
+          查看仓库
+        </a>
+      </div>
+      <div class="repo-card-bg">
+        <span></span>
+        <span></span>
+      </div>
+    </article>
+  `;
+}
+
+function renderRepoShowcase(repos, featuredRepoMap, isFallback = false) {
+  if (!repoGrid) return;
+  if (!Array.isArray(repos) || repos.length === 0) return;
+
+  const [spotlight, ...rest] = repos;
+  const spotlightFeatured = featuredRepoMap.get(spotlight.name) || featuredRepos[0];
+  const restMarkup = rest
+    .map((repo, index) =>
+      buildShowcaseRepo(repo, featuredRepoMap.get(repo.name), index + 1, isFallback)
+    )
+    .join("");
+
+  repoGrid.innerHTML = `
+    ${buildSpotlightRepo(spotlight, spotlightFeatured, 0, isFallback)}
+    <div class="repo-showcase-grid">
+      ${restMarkup}
+    </div>
+  `;
+
+  observeRevealNodes(repoGrid);
+  attachRepoMotion();
+}
+
+function attachRepoMotion() {
+  document.querySelectorAll(".repo-panel").forEach((panel) => {
+    panel.addEventListener("mousemove", (event) => {
+      const rect = panel.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      panel.style.setProperty("--tilt-x", `${x * 7}deg`);
+      panel.style.setProperty("--tilt-y", `${y * -7}deg`);
+      panel.style.setProperty("--glow-shift-x", `${x * 18}px`);
+      panel.style.setProperty("--glow-shift-y", `${y * 18}px`);
+    });
+
+    panel.addEventListener("mouseleave", () => {
+      panel.style.setProperty("--tilt-x", "0deg");
+      panel.style.setProperty("--tilt-y", "0deg");
+      panel.style.setProperty("--glow-shift-x", "0px");
+      panel.style.setProperty("--glow-shift-y", "0px");
+    });
+  });
 }
 
 function renderRepoFallback() {
   if (!repoGrid) return;
 
-  const fallbackCards = featuredRepos
-    .map((repo, index) => {
-      const name = repo.name || `repo-${index + 1}`;
-      const url = `${profileConfig.profileUrl || "https://github.com"}/${name}`;
-      const headline = repo.headline || "A small project with a clearer shape.";
-      const intro =
-        repo.intro ||
-        "这是一个我想继续打磨的项目，会逐步补充更多说明和功能。";
-      const status = repo.status || "Building";
-      const tags = Array.isArray(repo.tags) ? repo.tags.slice(0, 3) : [];
-      const tagMarkup = tags
-        .map((tag) => `<li>${escapeHtml(tag)}</li>`)
-        .join("");
-      return `
-        <article class="project-card shell-card">
-          <div class="repo-card-topline">
-            <div class="project-icon ${escapeHtml(repo.accent || "neutral")}">${String(index + 1).padStart(2, "0")}</div>
-            <span class="repo-status">${escapeHtml(status)}</span>
-          </div>
-          <p class="project-kicker">${escapeHtml(repo.tagline || "Repository")}</p>
-          <h3>${escapeHtml(name)}</h3>
-          <p class="repo-headline">${escapeHtml(headline)}</p>
-          <p class="repo-intro">${escapeHtml(intro)}</p>
-          <p>GitHub API 暂时不可用时，页面会先按你的手动配置展示仓库入口。</p>
-          ${tagMarkup ? `<ul class="repo-tag-row">${tagMarkup}</ul>` : ""}
-          <div class="repo-stats">
-            <span class="project-meta">Manual listing</span>
-          </div>
-          <a class="repo-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">
-            查看仓库
-          </a>
-        </article>
-      `;
-    })
-    .join("");
-
-  repoGrid.innerHTML = fallbackCards;
+  const fallbackRepos = featuredRepos.map((repo) => ({
+    name: repo.name,
+    language: repo.tags?.[0] || "Configured",
+    stargazers_count: 0,
+  }));
+  const featuredRepoMap = new Map(featuredRepos.map((repo) => [repo.name, repo]));
+  renderRepoShowcase(fallbackRepos, featuredRepoMap, true);
   if (repoCountNode) repoCountNode.textContent = String(featuredRepos.length || "--");
 }
 
@@ -181,13 +271,12 @@ async function loadGitHubRepos() {
     const orderedRepos = featuredRepos
       .map((repo) => selectedRepos.find((item) => item.name === repo.name))
       .filter(Boolean);
-
-    const finalRepos = orderedRepos.length > 0 ? orderedRepos : repos.slice(0, 6);
+    const fallbackRepos = repos
+      .filter((repo) => !orderedRepos.some((item) => item.name === repo.name))
+      .slice(0, 6 - orderedRepos.length);
+    const finalRepos = orderedRepos.length > 0 ? [...orderedRepos, ...fallbackRepos] : repos.slice(0, 6);
     const languages = new Set(finalRepos.map((repo) => repo.language).filter(Boolean));
-
-    repoGrid.innerHTML = finalRepos
-      .map((repo, index) => buildRepoCard(repo, featuredRepoMap.get(repo.name), index))
-      .join("");
+    renderRepoShowcase(finalRepos, featuredRepoMap);
 
     if (repoCountNode) repoCountNode.textContent = String(finalRepos.length);
     if (languageCountNode) languageCountNode.textContent = String(languages.size || 1);
