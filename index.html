@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Badelement | Apple-Style Homepage</title>
+    <meta
+      name="description"
+      content="A polished Apple-style personal homepage with refined glassmorphism, layered cards, and elegant motion."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+      <div class="grid-noise"></div>
+
+      <header class="topbar">
+        <div class="traffic-lights" aria-hidden="true">
+          <span class="light red"></span>
+          <span class="light yellow"></span>
+          <span class="light green"></span>
+        </div>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#home">首页</a>
+          <a href="#repositories">仓库</a>
+          <a href="#about">关于</a>
+          <a href="#contact">联系</a>
+        </nav>
+
+        <button class="ghost-button" type="button" id="themePulseButton">
+          View Profile
+        </button>
+      </header>
+
+      <main>
+        <section class="hero shell-card reveal" id="home">
+          <div class="hero-copy">
+            <p class="eyebrow">Badelement Studio</p>
+            <h1>把想法做成有质感的产品界面。</h1>
+            <p class="hero-description">
+              我专注于把工具、自动化和产品想法，打磨成更轻、更顺、更像原生体验的数字作品。
+              这是一张苹果风格的个人主页模板，你可以继续把它改成真正属于自己的首页。
+            </p>
+
+            <div class="hero-actions">
+              <a class="primary-button" href="#repositories">查看仓库</a>
+              <a class="secondary-button" href="#contact">联系我</a>
+            </div>
+
+            <div class="hero-metrics">
+              <article>
+                <span class="metric-value" id="repoCount">--</span>
+                <span class="metric-label">展示仓库</span>
+              </article>
+              <article>
+                <span class="metric-value" id="languageCount">--</span>
+                <span class="metric-label">主要语言</span>
+              </article>
+              <article>
+                <span class="metric-value" id="localTime">20:48</span>
+                <span class="metric-label">Shanghai Time</span>
+              </article>
+            </div>
+          </div>
+
+          <div class="hero-panel">
+            <div class="profile-window shell-card">
+              <div class="window-toolbar">
+                <div>
+                  <p class="window-title">Personal Dashboard</p>
+                  <p class="window-subtitle">Intentional software, calm systems</p>
+                </div>
+                <span class="status-pill">Available for building</span>
+              </div>
+
+              <div class="profile-grid">
+                <article class="profile-card profile-card-large">
+                  <div class="avatar-badge">B</div>
+                  <div>
+                    <p class="profile-label">Now Building</p>
+                    <h2>Apple-style interfaces with practical workflows</h2>
+                    <p class="profile-note">
+                      从视觉质感到实际交互，把“好看”和“能用”放在同一层优先级。
+                    </p>
+                  </div>
+                </article>
+
+                <article class="profile-card">
+                  <p class="profile-label">Focus</p>
+                  <ul class="tag-list">
+                    <li>Web UI</li>
+                    <li>Automation</li>
+                    <li>Desktop Tools</li>
+                  </ul>
+                </article>
+
+                <article class="profile-card">
+                  <p class="profile-label">Current Mood</p>
+                  <p class="profile-highlight">Clean systems. Soft motion. Sharp details.</p>
+                </article>
+
+                <article class="profile-card mini-chart-card">
+                  <p class="profile-label">Weekly Output</p>
+                  <div class="mini-chart" aria-hidden="true">
+                    <span style="--bar-height: 44%"></span>
+                    <span style="--bar-height: 62%"></span>
+                    <span style="--bar-height: 58%"></span>
+                    <span style="--bar-height: 84%"></span>
+                    <span style="--bar-height: 73%"></span>
+                    <span style="--bar-height: 92%"></span>
+                    <span style="--bar-height: 68%"></span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" id="repositories">
+          <div class="section-heading">
+            <p class="eyebrow">Featured Repositories</p>
+            <h2>把你的 GitHub 仓库变成主页内容本身。</h2>
+          </div>
+
+          <div class="repo-toolbar shell-card">
+            <div>
+              <p class="repo-toolbar-label">GitHub Identity</p>
+              <h3 id="githubIdentity">Loading profile...</h3>
+            </div>
+            <a
+              class="secondary-button compact-button"
+              id="githubProfileLink"
+              href="https://github.com/badelement"
+              target="_blank"
+              rel="noreferrer"
+            >
+              打开 GitHub
+            </a>
+          </div>
+
+          <div class="project-grid" id="repoGrid" aria-live="polite">
+            <article class="project-card shell-card repo-loading-card">
+              <div class="project-icon neutral">...</div>
+              <p class="project-kicker">Loading</p>
+              <h3>正在读取仓库信息</h3>
+              <p>页面会从 GitHub API 获取你配置的仓库并展示在这里。</p>
+              <span class="project-meta">GitHub Pages · Live data · Repository cards</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="detail-layout">
+          <article class="detail-card shell-card reveal" id="about">
+            <div class="section-heading compact">
+              <p class="eyebrow">About</p>
+              <h2>偏产品视角的开发者。</h2>
+            </div>
+
+            <p class="detail-copy">
+              我喜欢做那些“第一眼就舒服、第二眼才发现细节很多”的软件。相比堆功能，我更在意信息结构、
+              交互节奏、视觉重量和完成度。这种偏执很适合做工具类产品、个人效率软件和品牌型网页。
+            </p>
+
+            <div class="feature-list">
+              <div>
+                <span class="feature-label">Design Taste</span>
+                <p>柔和玻璃感、精致圆角、适度阴影、克制动效。</p>
+              </div>
+              <div>
+                <span class="feature-label">Build Style</span>
+                <p>优先做可运行版本，再逐步打磨成值得放上 GitHub 的作品。</p>
+              </div>
+              <div>
+                <span class="feature-label">Preferred Stack</span>
+                <p>HTML/CSS/JS、React、Tauri、SwiftUI 风格表达。</p>
+              </div>
+            </div>
+          </article>
+
+          <aside class="sidebar-stack">
+            <article class="shell-card reveal">
+              <div class="section-heading compact">
+                <p class="eyebrow">Toolkit</p>
+                <h2>常用能力</h2>
+              </div>
+              <ul class="capability-list">
+                <li>界面原型与视觉定调</li>
+                <li>静态站点与组件化页面</li>
+                <li>桌面工具概念验证</li>
+                <li>工作流自动化整合</li>
+              </ul>
+            </article>
+
+            <article class="shell-card reveal">
+              <div class="section-heading compact">
+                <p class="eyebrow">Snapshot</p>
+                <h2>简历式摘要</h2>
+              </div>
+
+              <div class="timeline">
+                <div>
+                  <span>2026</span>
+                  <p>聚焦 Apple-style 产品界面、个人工具和 GitHub 展示型项目。</p>
+                </div>
+                <div>
+                  <span>2025</span>
+                  <p>开始更系统地把自动化、UI 设计和产品表达结合起来。</p>
+                </div>
+                <div>
+                  <span>Next</span>
+                  <p>把这张主页继续扩展成真实作品集和可上线的个人站点。</p>
+                </div>
+              </div>
+            </article>
+          </aside>
+        </section>
+
+        <section class="contact-card shell-card reveal" id="contact">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2>如果你想把一个想法做得更像产品，就从这里开始。</h2>
+          </div>
+
+          <div class="contact-actions">
+            <a class="primary-button" href="mailto:hello@badelement.dev">hello@badelement.dev</a>
+            <a
+              class="secondary-button"
+              href="https://github.com/Badelement"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./site-config.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
