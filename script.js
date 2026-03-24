@@ -160,33 +160,49 @@ function buildSpotlightRepo(repo, featured, index, isFallback = false) {
   `;
 }
 
-function buildShowcaseRepo(repo, featured, index, isFallback = false) {
+function buildStoryRepo(repo, featured, index, isFallback = false) {
   const meta = buildMeta(repo, featured, index, isFallback);
   const tags = meta.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("");
+  const layoutClass = index % 2 === 0 ? "story-right" : "story-left";
   return `
-    <article class="repo-showcase-card shell-card reveal repo-panel tone-${escapeHtml(meta.tone)}">
-      <div class="repo-card-topline">
-        <div class="project-icon ${escapeHtml(meta.accent)}">${String(index + 1).padStart(2, "0")}</div>
-        <span class="repo-status">${escapeHtml(meta.status)}</span>
-      </div>
-      <p class="project-kicker">${escapeHtml(meta.tagline)}</p>
-      <h3>${escapeHtml(repo.name)}</h3>
-      <p class="repo-headline">${escapeHtml(meta.headline)}</p>
-      <p class="repo-intro">${escapeHtml(meta.intro)}</p>
-      <p class="repo-description">${escapeHtml(meta.description)}</p>
-      ${tags ? `<ul class="repo-tag-row">${tags}</ul>` : ""}
-      <div class="repo-bottom-row">
-        <div class="repo-stats">
-          <span class="project-meta">${escapeHtml(meta.language)}</span>
-          <span class="project-meta">★ ${escapeHtml(meta.stars)}</span>
+    <article class="repo-story shell-card reveal repo-panel tone-${escapeHtml(meta.tone)} ${layoutClass}">
+      <div class="repo-story-copy">
+        <p class="eyebrow">${escapeHtml(meta.eyebrow)}</p>
+        <div class="repo-card-topline">
+          <div class="project-icon ${escapeHtml(meta.accent)}">${String(index + 1).padStart(2, "0")}</div>
+          <span class="repo-status">${escapeHtml(meta.status)}</span>
         </div>
-        <a class="repo-link" href="${escapeHtml(meta.url)}" target="_blank" rel="noreferrer">
-          查看仓库
-        </a>
+        <p class="project-kicker">${escapeHtml(meta.tagline)}</p>
+        <h3>${escapeHtml(repo.name)}</h3>
+        <p class="repo-headline">${escapeHtml(meta.headline)}</p>
+        <p class="repo-intro">${escapeHtml(meta.intro)}</p>
+        <p class="repo-description">${escapeHtml(meta.description)}</p>
+        ${tags ? `<ul class="repo-tag-row">${tags}</ul>` : ""}
+        <div class="repo-bottom-row">
+          <div class="repo-stats">
+            <span class="project-meta">${escapeHtml(meta.language)}</span>
+            <span class="project-meta">★ ${escapeHtml(meta.stars)}</span>
+          </div>
+          <a class="repo-link" href="${escapeHtml(meta.url)}" target="_blank" rel="noreferrer">
+            查看仓库
+          </a>
+        </div>
       </div>
-      <div class="repo-card-bg">
-        <span></span>
-        <span></span>
+      <div class="repo-story-visual">
+        <div class="repo-card-bg">
+          <span></span>
+          <span></span>
+        </div>
+        <div class="repo-story-frame">
+          <p>${escapeHtml(meta.tagline)}</p>
+          <h4>${escapeHtml(repo.name)}</h4>
+          <span>${escapeHtml(meta.headline)}</span>
+        </div>
+        <div class="repo-story-lines">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </article>
   `;
@@ -200,13 +216,13 @@ function renderRepoShowcase(repos, featuredRepoMap, isFallback = false) {
   const spotlightFeatured = featuredRepoMap.get(spotlight.name) || featuredRepos[0];
   const restMarkup = rest
     .map((repo, index) =>
-      buildShowcaseRepo(repo, featuredRepoMap.get(repo.name), index + 1, isFallback)
+      buildStoryRepo(repo, featuredRepoMap.get(repo.name), index + 1, isFallback)
     )
     .join("");
 
   repoGrid.innerHTML = `
     ${buildSpotlightRepo(spotlight, spotlightFeatured, 0, isFallback)}
-    <div class="repo-showcase-grid">
+    <div class="repo-story-stack">
       ${restMarkup}
     </div>
   `;
