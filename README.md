@@ -15,6 +15,7 @@
 - `styles.css`: 视觉样式、响应式布局和动效
 - `script.js`: 实时时钟、滚动显现和轻交互
 - `site-config.js`: GitHub 用户名、展示名称和精选仓库配置
+- `GITHUB_COPY.md`: 给 GitHub 仓库和 README 使用的文案稿
 - `.github/workflows/deploy-pages.yml`: GitHub Pages 自动部署工作流
 - `PROFILE-README.md`: GitHub 个人资料页 README 模板
 
