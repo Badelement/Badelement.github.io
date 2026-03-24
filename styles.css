@@ -621,6 +621,16 @@ main {
   overflow: hidden;
 }
 
+.align-center .repo-story-frame,
+.align-center .repo-visual-core {
+  text-align: center;
+}
+
+.align-right .repo-story-frame,
+.align-right .repo-visual-core {
+  text-align: right;
+}
+
 .repo-description {
   margin-top: 12px !important;
   color: var(--text-muted) !important;
@@ -847,6 +857,17 @@ main {
   letter-spacing: -0.05em;
 }
 
+.repo-motif {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.repo-motif span {
+  position: absolute;
+  opacity: 0.8;
+}
+
 .repo-card-bg {
   position: absolute;
   inset: 0;
@@ -926,6 +947,149 @@ main {
 .repo-story-lines span:nth-child(3) {
   top: 22%;
   right: 28%;
+}
+
+.motif-portal .repo-motif span {
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.motif-portal .repo-motif span:nth-child(1) {
+  width: 46%;
+  aspect-ratio: 1;
+  left: 26%;
+  top: 12%;
+}
+
+.motif-portal .repo-motif span:nth-child(2) {
+  width: 30%;
+  aspect-ratio: 1;
+  left: 34%;
+  top: 20%;
+}
+
+.motif-portal .repo-motif span:nth-child(3),
+.motif-portal .repo-motif span:nth-child(4) {
+  display: none;
+}
+
+.motif-waves .repo-motif span,
+.motif-timeline .repo-motif span {
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.46), transparent);
+}
+
+.motif-waves .repo-motif span:nth-child(1) {
+  top: 18%;
+}
+
+.motif-waves .repo-motif span:nth-child(2) {
+  top: 24%;
+}
+
+.motif-waves .repo-motif span:nth-child(3) {
+  top: 30%;
+}
+
+.motif-waves .repo-motif span:nth-child(4) {
+  top: 36%;
+}
+
+.motif-grid .repo-motif {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.motif-grid .repo-motif span,
+.motif-frames .repo-motif span {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 22px;
+}
+
+.motif-grid .repo-motif span:nth-child(1) {
+  inset: 16% 18% 26% 16%;
+}
+
+.motif-grid .repo-motif span:nth-child(2) {
+  inset: 26% 28% 16% 26%;
+}
+
+.motif-grid .repo-motif span:nth-child(3),
+.motif-grid .repo-motif span:nth-child(4) {
+  display: none;
+}
+
+.motif-nodes .repo-motif span {
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 0 0 6px rgba(255, 255, 255, 0.06),
+    0 0 0 20px rgba(255, 255, 255, 0.04);
+}
+
+.motif-nodes .repo-motif span:nth-child(1) {
+  width: 16px;
+  height: 16px;
+  top: 24%;
+  left: 18%;
+}
+
+.motif-nodes .repo-motif span:nth-child(2) {
+  width: 18px;
+  height: 18px;
+  top: 18%;
+  right: 20%;
+}
+
+.motif-nodes .repo-motif span:nth-child(3) {
+  width: 20px;
+  height: 20px;
+  bottom: 28%;
+  left: 42%;
+}
+
+.motif-nodes .repo-motif span:nth-child(4) {
+  width: 14px;
+  height: 14px;
+  bottom: 20%;
+  right: 24%;
+}
+
+.motif-timeline .repo-motif span:nth-child(1) {
+  top: 22%;
+}
+
+.motif-timeline .repo-motif span:nth-child(2) {
+  top: 34%;
+}
+
+.motif-timeline .repo-motif span:nth-child(3) {
+  top: 46%;
+}
+
+.motif-timeline .repo-motif span:nth-child(4) {
+  top: 58%;
+}
+
+.motif-frames .repo-motif span:nth-child(1) {
+  inset: 12% 22% 42% 12%;
+}
+
+.motif-frames .repo-motif span:nth-child(2) {
+  inset: 28% 12% 24% 26%;
+}
+
+.motif-frames .repo-motif span:nth-child(3) {
+  inset: 16% 34% 54% 32%;
+}
+
+.motif-frames .repo-motif span:nth-child(4) {
+  display: none;
 }
 
 .repo-panel {

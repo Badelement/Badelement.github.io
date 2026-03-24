@@ -19,6 +19,8 @@ window.SITE_CONFIG = {
       visual: {
         tone: "blue",
         eyebrow: "Spotlight",
+        motif: "portal",
+        align: "center",
       },
     },
     {
@@ -33,6 +35,8 @@ window.SITE_CONFIG = {
       visual: {
         tone: "sunset",
         eyebrow: "Utility",
+        motif: "waves",
+        align: "left",
       },
     },
     {
@@ -47,6 +51,8 @@ window.SITE_CONFIG = {
       visual: {
         tone: "silver",
         eyebrow: "System",
+        motif: "grid",
+        align: "right",
       },
     },
     {
@@ -61,6 +67,8 @@ window.SITE_CONFIG = {
       visual: {
         tone: "violet",
         eyebrow: "Research",
+        motif: "nodes",
+        align: "left",
       },
     },
     {
@@ -75,6 +83,8 @@ window.SITE_CONFIG = {
       visual: {
         tone: "mint",
         eyebrow: "Routine",
+        motif: "timeline",
+        align: "right",
       },
     },
     {
@@ -89,6 +99,8 @@ window.SITE_CONFIG = {
       visual: {
         tone: "amber",
         eyebrow: "Desktop",
+        motif: "frames",
+        align: "center",
       },
     },
   ],

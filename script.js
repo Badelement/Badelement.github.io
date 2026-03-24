@@ -83,6 +83,14 @@ function getToneClass(featured) {
   return featured?.visual?.tone || "blue";
 }
 
+function getMotifClass(featured) {
+  return featured?.visual?.motif || "portal";
+}
+
+function getAlignClass(featured) {
+  return featured?.visual?.align || "left";
+}
+
 function buildMeta(repo, featured, index, isFallback = false) {
   const language = repo.language || "Unspecified";
   const stars = typeof repo.stargazers_count === "number" ? repo.stargazers_count : 0;
@@ -113,6 +121,8 @@ function buildMeta(repo, featured, index, isFallback = false) {
     url,
     eyebrow: featured?.visual?.eyebrow || "Project",
     tone: getToneClass(featured),
+    motif: getMotifClass(featured),
+    align: getAlignClass(featured),
   };
 }
 
@@ -120,7 +130,7 @@ function buildSpotlightRepo(repo, featured, index, isFallback = false) {
   const meta = buildMeta(repo, featured, index, isFallback);
   const tags = meta.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("");
   return `
-    <article class="repo-spotlight shell-card reveal repo-panel tone-${escapeHtml(meta.tone)}">
+    <article class="repo-spotlight shell-card reveal repo-panel tone-${escapeHtml(meta.tone)} motif-${escapeHtml(meta.motif)} align-${escapeHtml(meta.align)}">
       <div class="repo-copy">
         <p class="eyebrow">${escapeHtml(meta.eyebrow)}</p>
         <div class="repo-card-topline">
@@ -150,6 +160,12 @@ function buildSpotlightRepo(repo, featured, index, isFallback = false) {
           <span></span>
           <span></span>
         </div>
+        <div class="repo-motif repo-motif-spotlight">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <div class="repo-visual-core">
           <p>${escapeHtml(meta.tagline)}</p>
           <h4>${escapeHtml(repo.name)}</h4>
@@ -165,7 +181,7 @@ function buildStoryRepo(repo, featured, index, isFallback = false) {
   const tags = meta.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("");
   const layoutClass = index % 2 === 0 ? "story-right" : "story-left";
   return `
-    <article class="repo-story shell-card reveal repo-panel tone-${escapeHtml(meta.tone)} ${layoutClass}">
+    <article class="repo-story shell-card reveal repo-panel tone-${escapeHtml(meta.tone)} motif-${escapeHtml(meta.motif)} align-${escapeHtml(meta.align)} ${layoutClass}">
       <div class="repo-story-copy">
         <p class="eyebrow">${escapeHtml(meta.eyebrow)}</p>
         <div class="repo-card-topline">
@@ -190,6 +206,12 @@ function buildStoryRepo(repo, featured, index, isFallback = false) {
       </div>
       <div class="repo-story-visual">
         <div class="repo-card-bg">
+          <span></span>
+          <span></span>
+        </div>
+        <div class="repo-motif repo-motif-story">
+          <span></span>
+          <span></span>
           <span></span>
           <span></span>
         </div>
