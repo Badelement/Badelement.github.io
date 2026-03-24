@@ -1,7 +1,10 @@
 # GitHub Copy Deck
 
-给 `Badelement` 的仓库准备的一套更克制、干净、带一点苹果风味的文案。  
-目标不是堆华丽词，而是让项目看起来更完整、更有气质，也更像经过认真打磨的作品。
+给 `Badelement` 的主页准备的一套文案方向。  
+这里要区分两件事：
+
+- GitHub 仓库页面本身：保持正常、清楚、实用
+- 主页网页里的仓库卡片：可以更有苹果广告风一点
 
 ## Tone
 
@@ -10,6 +13,12 @@
 - 有一点产品感
 - 不装深奥
 - 保留“还在学习中”的真实状态
+
+## Writing Rule
+
+- GitHub `About` 和 README 开头：正常写，偏清晰说明
+- 首页卡片 `headline`：更短、更像广告语
+- 首页卡片 `intro`：回到正常说明，不要整段都飘
 
 ## 1. Badelement.github.io
 
@@ -25,10 +34,10 @@ Instead of listing repositories in a plain grid, it presents them with a softer,
 
 ### Homepage Card Copy
 
-- `tagline`
-  GitHub Pages 个人主页
+- `headline`
+  把仓库，变成作品展示。
 - `intro`
-  这是我的 GitHub 入口页。我想让仓库展示不只是“能点进去”，而是像一个安静、干净、带一点苹果风味的作品页面。
+  这是我的 GitHub 入口页，用更克制的视觉和更清晰的信息结构，把少量仓库整理成一个完整主页。
 
 ## 2. doc_translation_tool
 
@@ -44,10 +53,10 @@ It focuses on keeping the flow calm and predictable. The document stays intact, 
 
 ### Homepage Card Copy
 
-- `tagline`
-  Markdown 文档翻译桌面工具
+- `headline`
+  让翻译回到流畅本身。
 - `intro`
-  这是一个更偏实用型的项目。我想把文档翻译这件事做得更安静、更顺滑一些，让 Markdown 结构、内容和输出结果都保持清晰。
+  面向真实文档工作流的桌面工具，重点是保留 Markdown 结构，让翻译过程更稳定，也更省心。
 
 ## 3. openclaw-stack
 
@@ -63,10 +72,10 @@ Instead of treating AI as a single assistant with a long prompt, this project ex
 
 ### Homepage Card Copy
 
-- `tagline`
-  OpenClaw 技能包与工作流集合
+- `headline`
+  给工作流，多一点秩序。
 - `intro`
-  这是一个偏实验性的方向。我想把零散的 AI 工具和技能整理成更有秩序的工作流，让整个过程看起来更像系统，而不只是零碎命令的堆叠。
+  围绕 OpenClaw 的技能与工作流实验，尝试把零散工具整理成更完整、更有层次的本地系统。
 
 ## Optional Chinese Bio Snippet
 
@@ -78,5 +87,5 @@ Instead of treating AI as a single assistant with a long prompt, this project ex
 ## Editing Notes
 
 - GitHub `About` 要短，偏一句话介绍
-- README Opening 要更像“项目气质说明”
-- 首页卡片文案要让人一眼知道项目是什么，同时保留一点风格感
+- README Opening 要正常，不要写成广告片旁白
+- 首页卡片文案可以带一点苹果广告风，但最好只放在 `headline`

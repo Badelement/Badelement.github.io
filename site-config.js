@@ -11,8 +11,9 @@ window.SITE_CONFIG = {
       name: "doc_translation_tool",
       tagline: "Markdown 文档翻译桌面工具",
       accent: "warm",
+      headline: "让翻译回到流畅本身。",
       intro:
-        "这是一个更偏实用型的项目。我想把文档翻译这件事做得更安静、更顺滑一些，让 Markdown 结构、内容和输出结果都保持清晰。",
+        "面向真实文档工作流的桌面工具，重点是保留 Markdown 结构，让翻译过程更稳定，也更省心。",
       status: "Ongoing",
       tags: ["Desktop Tool", "Markdown", "Translation"],
     },
@@ -20,8 +21,9 @@ window.SITE_CONFIG = {
       name: "apple-personal-homepage",
       tagline: "GitHub Pages 个人主页",
       accent: "cool",
+      headline: "把仓库，变成作品展示。",
       intro:
-        "这是我的 GitHub 入口页。我想让仓库展示不只是能点进去，而是像一个安静、干净、带一点苹果风味的作品页面。",
+        "这是我的 GitHub 入口页，用更克制的视觉和更清晰的信息结构，把少量仓库整理成一个完整主页。",
       status: "Live",
       tags: ["Portfolio", "Apple Style", "GitHub Pages"],
     },
@@ -29,8 +31,9 @@ window.SITE_CONFIG = {
       name: "openclaw-stack",
       tagline: "OpenClaw 技能包与工作流集合",
       accent: "neutral",
+      headline: "给工作流，多一点秩序。",
       intro:
-        "这是一个偏实验性的方向。我想把零散的 AI 工具和技能整理成更有秩序的工作流，让整个过程看起来更像系统，而不只是零碎命令的堆叠。",
+        "围绕 OpenClaw 的技能与工作流实验，尝试把零散工具整理成更完整、更有层次的本地系统。",
       status: "Exploring",
       tags: ["Automation", "Workflow", "AI Tools"],
     },

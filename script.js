@@ -78,6 +78,7 @@ function escapeHtml(value) {
 function buildRepoCard(repo, featured, index) {
   const accent = featured?.accent || ["warm", "cool", "neutral"][index % 3];
   const tagline = featured?.tagline || repo.language || "Repository";
+  const headline = featured?.headline || "Small project. Clear intention.";
   const description =
     repo.description ||
     "这个仓库还没有填写描述，你可以在 GitHub 上补一段更清晰的项目说明。";
@@ -100,6 +101,7 @@ function buildRepoCard(repo, featured, index) {
       </div>
       <p class="project-kicker">${escapeHtml(tagline)}</p>
       <h3>${escapeHtml(repo.name)}</h3>
+      <p class="repo-headline">${escapeHtml(headline)}</p>
       <p class="repo-intro">${escapeHtml(intro)}</p>
       <p>${escapeHtml(description)}</p>
       ${tagMarkup ? `<ul class="repo-tag-row">${tagMarkup}</ul>` : ""}
@@ -121,6 +123,7 @@ function renderRepoFallback() {
     .map((repo, index) => {
       const name = repo.name || `repo-${index + 1}`;
       const url = `${profileConfig.profileUrl || "https://github.com"}/${name}`;
+      const headline = repo.headline || "A small project with a clearer shape.";
       const intro =
         repo.intro ||
         "这是一个我想继续打磨的项目，会逐步补充更多说明和功能。";
@@ -137,6 +140,7 @@ function renderRepoFallback() {
           </div>
           <p class="project-kicker">${escapeHtml(repo.tagline || "Repository")}</p>
           <h3>${escapeHtml(name)}</h3>
+          <p class="repo-headline">${escapeHtml(headline)}</p>
           <p class="repo-intro">${escapeHtml(intro)}</p>
           <p>GitHub API 暂时不可用时，页面会先按你的手动配置展示仓库入口。</p>
           ${tagMarkup ? `<ul class="repo-tag-row">${tagMarkup}</ul>` : ""}

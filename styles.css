@@ -556,6 +556,15 @@ main {
   line-height: 1.7;
 }
 
+.repo-headline {
+  margin: 2px 0 10px !important;
+  color: var(--text);
+  font-size: 1.04rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.45;
+}
+
 .project-icon {
   display: grid;
   place-items: center;
