@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Badelement | Curious Builder Homepage</title>
+    <title>Badelement | Cinematic GitHub Showcase</title>
     <meta
       name="description"
-      content="Badelement 的苹果风 GitHub 主页，一个连接个人介绍与精选仓库的展示站点。"
+      content="Badelement 的电影感 GitHub 展示主页，以更强的章节感、动态和海报式视觉串联真实仓库。"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -14,6 +14,7 @@
     <div class="page-shell">
       <div class="ambient ambient-one"></div>
       <div class="ambient ambient-two"></div>
+      <div class="ambient ambient-three"></div>
       <div class="grid-noise"></div>
 
       <header class="topbar">
@@ -31,23 +32,32 @@
         </nav>
 
         <button class="ghost-button" type="button" id="themePulseButton">
-          View Profile
+          Enter World
         </button>
       </header>
 
       <main>
         <section class="hero shell-card reveal" id="home">
+          <div class="hero-backdrop">
+            <div class="hero-sun"></div>
+            <div class="hero-haze"></div>
+            <div class="hero-grid"></div>
+            <div class="hero-wordmark" aria-hidden="true">
+              <span>BAD</span>
+              <span>ELEMENT</span>
+            </div>
+          </div>
           <div class="hero-copy">
-            <p class="eyebrow">Badelement / 坏元素</p>
-            <h1>喜欢做点新奇东西的学习中开发者。</h1>
+            <p class="eyebrow">Badelement / 坏元素 / GitHub Showcase</p>
+            <h1>做点新奇的东西。 再把它们做得像一个世界。</h1>
             <p class="hero-description">
               我叫 Badelement，中文可以叫我坏元素。现在还在持续学习中，
               但已经很确定自己喜欢做那些有点新鲜感、有点实验性质、又真的能跑起来的小项目。
-              这里会作为我的 GitHub 入口页，连接我正在做和之后会做的仓库。
+              这里不是普通作品列表，而是把我的仓库做成一段一段更有情绪、更有节奏的展示页面。
             </p>
 
             <div class="hero-actions">
-              <a class="primary-button" href="#repositories">查看仓库</a>
+              <a class="primary-button" href="#repositories">进入仓库章节</a>
               <a class="secondary-button" href="#contact">联系我</a>
             </div>
 
@@ -62,59 +72,36 @@
               </article>
               <article>
                 <span class="metric-value" id="localTime">20:48</span>
-                <span class="metric-label">Shanghai Time</span>
+                <span class="metric-label">Shanghai Night</span>
               </article>
             </div>
           </div>
 
           <div class="hero-panel">
-            <div class="profile-window shell-card">
-              <div class="window-toolbar">
-                <div>
-                  <p class="window-title">Personal Dashboard</p>
-                  <p class="window-subtitle">Intentional software, calm systems</p>
-                </div>
-                <span class="status-pill">Available for building</span>
+            <div class="profile-window shell-card hero-poster">
+              <div class="window-toolbar poster-toolbar">
+                <p class="window-title">Badelement</p>
+                <span class="status-pill">Learning in public</span>
               </div>
 
-              <div class="profile-grid">
-                <article class="profile-card profile-card-large">
-                  <div class="avatar-badge">B</div>
-                  <div>
-                    <p class="profile-label">Now Building</p>
-                    <h2>Curious experiments, practical tools, and interfaces with personality</h2>
-                    <p class="profile-note">
-                      我喜欢尝试一点新奇的方向，再慢慢把它打磨成真正能用的作品。
-                    </p>
-                  </div>
-                </article>
+              <div class="poster-scene">
+                <div class="poster-sun"></div>
+                <div class="poster-palm palm-left"></div>
+                <div class="poster-palm palm-right"></div>
+                <div class="poster-ground"></div>
+              </div>
 
-                <article class="profile-card">
-                  <p class="profile-label">Focus</p>
-                  <ul class="tag-list">
-                    <li>Curious Projects</li>
-                    <li>Web UI</li>
-                    <li>Learning by Building</li>
-                  </ul>
-                </article>
-
-                <article class="profile-card">
-                  <p class="profile-label">Current Mood</p>
-                  <p class="profile-highlight">Still learning. Still building. Still trying weird ideas.</p>
-                </article>
-
-                <article class="profile-card mini-chart-card">
-                  <p class="profile-label">Weekly Output</p>
-                  <div class="mini-chart" aria-hidden="true">
-                    <span style="--bar-height: 44%"></span>
-                    <span style="--bar-height: 62%"></span>
-                    <span style="--bar-height: 58%"></span>
-                    <span style="--bar-height: 84%"></span>
-                    <span style="--bar-height: 73%"></span>
-                    <span style="--bar-height: 92%"></span>
-                    <span style="--bar-height: 68%"></span>
-                  </div>
-                </article>
+              <div class="poster-copy">
+                <p class="profile-label">Current Mood</p>
+                <h2>Still learning. Still building. Still making weird ideas feel real.</h2>
+                <p class="profile-note">
+                  一边学，一边做，一边把仓库慢慢堆成真正属于自己的世界观。
+                </p>
+                <ul class="tag-list">
+                  <li>Curious Projects</li>
+                  <li>Bold UI</li>
+                  <li>Learning by Shipping</li>
+                </ul>
               </div>
             </div>
           </div>
