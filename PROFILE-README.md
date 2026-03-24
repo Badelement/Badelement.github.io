@@ -1,11 +1,14 @@
 # Hi, I'm Badelement
 
-我在做偏产品感、偏工具型的软件，关注界面质感、工作流和完成度。
+中文可以叫我坏元素。
+
+我喜欢做点新奇的东西，目前还在学习中，也在用一个个真实项目来推动自己继续往前走。
 
 ## Home
 
 - Personal site: `https://Badelement.github.io`
 - GitHub profile: `https://github.com/Badelement`
+- Email: `jamchan221140@gmail.com`
 
 ## Featured Repositories
 
@@ -18,6 +21,7 @@
 
 ## What I Like Building
 
+- Novel little experiments
 - Apple-style interfaces
 - Personal productivity tools
 - Lightweight automation

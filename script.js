@@ -81,15 +81,28 @@ function buildRepoCard(repo, featured, index) {
   const description =
     repo.description ||
     "这个仓库还没有填写描述，你可以在 GitHub 上补一段更清晰的项目说明。";
+  const intro =
+    featured?.intro ||
+    "这是一个正在持续完善中的项目，你可以点进仓库看更完整的代码、说明和更新记录。";
   const language = repo.language || "Unspecified";
   const stars = typeof repo.stargazers_count === "number" ? repo.stargazers_count : 0;
+  const status = featured?.status || "Building";
+  const tags = Array.isArray(featured?.tags) ? featured.tags.slice(0, 3) : [];
+  const tagMarkup = tags
+    .map((tag) => `<li>${escapeHtml(tag)}</li>`)
+    .join("");
 
   return `
     <article class="project-card shell-card">
-      <div class="project-icon ${escapeHtml(accent)}">${String(index + 1).padStart(2, "0")}</div>
+      <div class="repo-card-topline">
+        <div class="project-icon ${escapeHtml(accent)}">${String(index + 1).padStart(2, "0")}</div>
+        <span class="repo-status">${escapeHtml(status)}</span>
+      </div>
       <p class="project-kicker">${escapeHtml(tagline)}</p>
       <h3>${escapeHtml(repo.name)}</h3>
+      <p class="repo-intro">${escapeHtml(intro)}</p>
       <p>${escapeHtml(description)}</p>
+      ${tagMarkup ? `<ul class="repo-tag-row">${tagMarkup}</ul>` : ""}
       <div class="repo-stats">
         <span class="project-meta">${escapeHtml(language)}</span>
         <span class="project-meta">★ ${escapeHtml(stars)}</span>
@@ -108,12 +121,25 @@ function renderRepoFallback() {
     .map((repo, index) => {
       const name = repo.name || `repo-${index + 1}`;
       const url = `${profileConfig.profileUrl || "https://github.com"}/${name}`;
+      const intro =
+        repo.intro ||
+        "这是一个我想继续打磨的项目，会逐步补充更多说明和功能。";
+      const status = repo.status || "Building";
+      const tags = Array.isArray(repo.tags) ? repo.tags.slice(0, 3) : [];
+      const tagMarkup = tags
+        .map((tag) => `<li>${escapeHtml(tag)}</li>`)
+        .join("");
       return `
         <article class="project-card shell-card">
-          <div class="project-icon ${escapeHtml(repo.accent || "neutral")}">${String(index + 1).padStart(2, "0")}</div>
+          <div class="repo-card-topline">
+            <div class="project-icon ${escapeHtml(repo.accent || "neutral")}">${String(index + 1).padStart(2, "0")}</div>
+            <span class="repo-status">${escapeHtml(status)}</span>
+          </div>
           <p class="project-kicker">${escapeHtml(repo.tagline || "Repository")}</p>
           <h3>${escapeHtml(name)}</h3>
+          <p class="repo-intro">${escapeHtml(intro)}</p>
           <p>GitHub API 暂时不可用时，页面会先按你的手动配置展示仓库入口。</p>
+          ${tagMarkup ? `<ul class="repo-tag-row">${tagMarkup}</ul>` : ""}
           <div class="repo-stats">
             <span class="project-meta">Manual listing</span>
           </div>

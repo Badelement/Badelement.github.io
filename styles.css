@@ -532,6 +532,13 @@ main {
   padding: 24px;
 }
 
+.repo-card-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
 .project-card h3 {
   margin: 12px 0 10px;
   font-size: 1.5rem;
@@ -542,6 +549,13 @@ main {
   margin: 0;
 }
 
+.repo-intro {
+  margin-bottom: 12px !important;
+  color: var(--text) !important;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
 .project-icon {
   display: grid;
   place-items: center;
@@ -550,6 +564,21 @@ main {
   border-radius: 18px;
   font-weight: 700;
   color: white;
+}
+
+.repo-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 22px rgba(101, 118, 146, 0.12);
 }
 
 .project-icon.warm {
@@ -578,6 +607,25 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.repo-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.repo-tag-row li {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(97, 110, 138, 0.08);
 }
 
 .repo-stats .project-meta {
